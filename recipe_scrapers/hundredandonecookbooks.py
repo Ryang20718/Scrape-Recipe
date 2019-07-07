@@ -9,13 +9,15 @@ class HundredAndOneCookbooks(AbstractScraper):
         return '101cookbooks.com'
 
     def title(self):
-        return self.soup.find('h1').get_text()
+        return self.soup.find('h1',class_='entry-title').get_text()
 
     def total_time(self):
         return get_minutes(self.soup.find('span', {'class': 'preptime'}))
 
     def ingredients(self):
-        ingredients_html = self.soup.find('div', {'id': 'recipe'}).find('blockquote').find('p')
+	return self.soup.find('h1',class_='entry-title').get_text()
+	ingredients_html = self.soup.find('li', class_= 'wprm-recipe-ingredient')
+	return ingredients_html
         return ingredients_html.get_text().split('\n')
 
     def instructions(self):
