@@ -15,10 +15,7 @@ class HundredAndOneCookbooks(AbstractScraper):
         return get_minutes(self.soup.find('span', {'class': 'preptime'}))
 
     def ingredients(self):
-	return self.soup.find('h1',class_='entry-title').get_text()
-	ingredients_html = self.soup.find('li', class_= 'wprm-recipe-ingredient')
-	return ingredients_html
-        return ingredients_html.get_text().split('\n')
+        return '1'
 
     def instructions(self):
         instructions_html = self.soup.find('div', {'id': 'recipe'}).find('blockquote').find_next_siblings()
